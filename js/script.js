@@ -13,32 +13,26 @@ async function getBurger() {
 
     try {
         const response = await fetch(url, options);
+        const burgers = await response.json()
 
-    const burgers = await response.json()
+        console.log(burgers);
 
-    console.log(burgers);
+        container.innerHTML = "";
 
-    container.innerHTML = "";
-
-    for(let i = 0; i < burgers.length; i++) {
-        console.log(burgers[i].name);
-
-        // if(i === 5) {
-        //     break;
-        // }
-
-        container.innerHTML += `<div class="results">
-                                        <h1>${burgers[i].name}</h1>
-                                        <h3>${burgers[i].description}</h3>    
-                                        <h4>Ingredients: ${burgers[i].ingredients}</h4>
-                                        <h5>Restaurant: ${burgers[i].restaurant}</h5>
-                                        </div>`;
-        }
+        burgers.forEach(function(burger) {
+            container.innerHTML += `<a href="details.html?id=${burger.id}" class="results">
+            <h1>${burger.name}</h1>
+            <h3>${burger.description}</h3>    
+            <h4>Ingredients: ${burger.ingredients}</h4>
+            <h5>Restaurant: ${burger.restaurant}</h5>
+            </a>`;
+        });
+        
     }
     catch(error) {
-               console.log("An error occured");
-               container.innerHTML = errorMessage("Sorry, it is an error on our side:(");
-           }
+        console.log(error);
+        container.innerHTML = errorMessage("Sorry, it is an error on our side:(");
+    }
 }
 
 getBurger();

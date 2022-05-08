@@ -1,4 +1,12 @@
-const burgerUrl = "https://burgers1.p.rapidapi.com/burgers/2";
+const resultContainer = document.querySelector(".result");
+
+const queryString = document.location.search;
+const params = new URLSearchParams(queryString);
+const id = params.get("id");
+
+console.log(id);
+
+const burgerUrl = "https://burgers1.p.rapidapi.com/burgers/" + id;
 const burgerOptions = {
 	method: 'GET',
 	headers: {
@@ -6,8 +14,6 @@ const burgerOptions = {
 		'X-RapidAPI-Key': 'dc51b191d2msha6a10125422b4a3p1527dajsn63787a84857a'
 	}
 };
-
-const resultContainer = document.querySelector(".result");
 
 async function getBurgers() {
 
@@ -25,9 +31,9 @@ async function getBurgers() {
                                                 <h5>Restaurant: ${details.restaurant}</h5></div>`;
     }
     catch(error) {
-                       console.log("An error occured");
-                       resultContainer.innerHTML = errorMessage("Sorry, it is an error on our side:(");
-                   }
+        console.log("An error occured");
+        resultContainer.innerHTML = errorMessage("Sorry, it is an error on our side:(");
+    }
 }
 
 getBurgers(); 
