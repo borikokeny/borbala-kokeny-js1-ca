@@ -20,18 +20,18 @@ async function getBurger() {
         container.innerHTML = "";
 
         burgers.forEach(function(burger) {
-            container.innerHTML += `<a href="details.html?id=${burger.id}" class="results">
-            <h1>${burger.name}</h1>
-            <h3>${burger.description}</h3>    
-            <h4>Ingredients: ${burger.ingredients}</h4>
-            <h5>Restaurant: ${burger.restaurant}</h5>
-            </a>`;
+                    container.innerHTML += `<a href="details.html?id=${burger.id}" class="results">
+                                            <h1>${burger.name}</h1>
+                                            <h3>${burger.description}</h3>    
+                                            <h4>Ingredients: ${burger.ingredients}</h4>
+                                            <h5>Restaurant: ${burger.restaurant}</h5>
+                                            </a>`;
         });
         
     }
     catch(error) {
         console.log(error);
-        container.innerHTML = errorMessage("Sorry, it is an error on our side:(");
+        container.innerHTML = errorMessage("error", error);
     }
 }
 

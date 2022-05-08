@@ -25,14 +25,14 @@ async function getBurgers() {
         resultContainer.innerHTML = "";
        
         resultContainer.innerHTML += `<div class="results">
-                                                <h2>${details.name}</h2>
-                                                <h3>${details.description}</h3>    
-                                                <h4>Ingredients: ${details.ingredients}</h4>
-                                                <h5>Restaurant: ${details.restaurant}</h5></div>`;
+                                        <h2>${details.name}</h2>
+                                        <h3>${details.description}</h3>    
+                                        <h4>Ingredients: ${details.ingredients}</h4>
+                                        <h5>Restaurant: ${details.restaurant}</h5></div>`;
     }
     catch(error) {
-        console.log("An error occured");
-        resultContainer.innerHTML = errorMessage("Sorry, it is an error on our side:(");
+        console.log(error);
+        resultContainer.innerHTML = errorMessage("error", error);
     }
 }
 
